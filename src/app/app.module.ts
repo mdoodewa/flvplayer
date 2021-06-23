@@ -9,10 +9,14 @@ import {VgStreamingModule} from '@videogular/ngx-videogular/streaming';
 
 import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
+import { ChatRoomComponent } from './chat-room/chat-room.component';
+import { StreamComponent } from './stream/stream.component';
 
 @NgModule({
   declarations: [
     AppComponent,
+    ChatRoomComponent,
+    StreamComponent,
   ],
   imports: [
     BrowserModule,

@@ -1,0 +1,19 @@
+<video id="videoElement" width='100%' class="vjs-default-skin mr-4 vjs-big-play-centered vjs-16-9" controls></video>
+<div class="container-fluid">
+  <div class="d-flex flex-row-reverse">
+    <div class="col-sm-5">
+      <div class="form-group">
+        <label for="username">Username</label>
+        <input type="text" [(ngModel)]="user" class="form-control" id="username" placeholder="Enter username">
+        <!-- <small id="userHelp" class="form-text text-muted">Type your username.</small> -->
+      </div>
+      <div class="col sm-2">
+        <div style="margin-top:19px;" class="pull-right">
+          <button type="button" class="btn btn-primary" (click)="join()">Join</button>
+          <!-- <button type="button" class="btn btn-default" (click)="leave()">Leave</button> -->
+        </div>
+      </div>
+    </div>
+    <button [routerLink]="['/chat', title]">Go to Chat</button>
+  </div>
+</div>
