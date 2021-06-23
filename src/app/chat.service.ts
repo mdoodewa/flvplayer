@@ -46,12 +46,15 @@ export class ChatService{
 
     sendMessage(data)
     {
+        console.log("sendMessage called", data.user, data.message);
         this.socket.emit('message',data);
     }
 
     newMessageReceived(){
-        let observable = new Observable<{user:String, message:String}>(observer=>{
+      console.log("newMessageReceived called");
+        let observable = new Observable<{user:"okay", message:String}>(observer=>{
             this.socket.on('new message', (data)=>{
+              console.log("new message called");
                 observer.next(data);
             });
             return () => {this.socket.disconnect();}
