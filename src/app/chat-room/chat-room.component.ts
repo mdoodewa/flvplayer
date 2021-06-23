@@ -1,4 +1,5 @@
 import { Component, OnInit } from '@angular/core';
+import { ActivatedRoute } from '@angular/router';
 import { ChatService } from '../chat.service';
 
 @Component({
@@ -8,12 +9,12 @@ import { ChatService } from '../chat.service';
   providers:[ChatService]
 })
 export class ChatRoomComponent implements OnInit {
-  user:String;
+  user: "test";
     room:String;
     messageText:String;
     messageArray:Array<{user:String,message:String}> = [];
 
-  constructor(private _chatService:ChatService) {
+  constructor(private _chatService:ChatService, private route: ActivatedRoute) {
     this._chatService.newUserJoined()
         .subscribe(data=> this.messageArray.push(data));
 
@@ -27,10 +28,11 @@ export class ChatRoomComponent implements OnInit {
 
   sendMessage()
     {
-        this._chatService.sendMessage({user:this.user, room:this.room, message:this.messageText});
+        this._chatService.sendMessage({user:"test",  message:this.messageText, room:this.room,});
     }
 
   ngOnInit(): void {
+    this.room = this.route.snapshot.params.id;
   }
 
 }

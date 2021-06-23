@@ -14,7 +14,8 @@ export class ChatService{
 
     joinRoom(data)
     {
-        this.socket.emit('join',data);
+      console.log(data.user, data.room);
+      this.socket.emit('join', data.user, data.room);
     }
 
     newUserJoined()
@@ -46,20 +47,25 @@ export class ChatService{
 
     sendMessage(data)
     {
-        console.log("sendMessage called", data.user, data.message);
+        console.log("sendMessage called", data.user, data.message, data.room);
         this.socket.emit('message',data);
     }
 
-    newMessageReceived(){
-      console.log("newMessageReceived called");
-        let observable = new Observable<{user:"okay", message:String}>(observer=>{
-            this.socket.on('new message', (data)=>{
-              console.log("new message called");
-                observer.next(data);
+// this.socket.on('new message', (data)=>{
+
+//     })
+
+newMessageReceived(){
+      console.log("newMessageReceived called")
+      let observable = new Observable<{user:String, message:String}>(observer=>{
+          console.log("obsevable called")
+          this.socket.on('new message', (data)=>{
+              console.log("new message called")
+              observer.next(data);
             });
-            return () => {this.socket.disconnect();}
+          return () => {this.socket.disconnect();}
         });
 
-        return observable;
+      return observable;
     }
 }

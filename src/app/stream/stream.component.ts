@@ -25,8 +25,8 @@ export class StreamComponent implements OnInit {
         this._chatService.userLeftRoom()
         .subscribe(data=>this.messageArray.push(data));
 
-        this._chatService.newMessageReceived()
-        .subscribe(data=>this.messageArray.push(data));
+        // this._chatService.newMessageReceived()
+        // .subscribe(data=>this.messageArray.push(data));
     }
 
     join(){
@@ -38,16 +38,16 @@ export class StreamComponent implements OnInit {
     }
 
   ngOnInit() {
-    var videoElement = document.getElementById('videoElement');
-    var flvPlayer = flvjs.createPlayer({
-      type: 'flv',
-      isLive: true,
-      url: 'http://145.49.4.49:8000/live/STREAM_NAME.flv'
+    // var videoElement = document.getElementById('videoElement');
+    // var flvPlayer = flvjs.createPlayer({
+    //   type: 'flv',
+    //   isLive: true,
+    //   url: 'http://145.49.4.49:8000/live/STREAM_NAME.flv'
 
-    });
-    flvPlayer.attachMediaElement(videoElement);
-    flvPlayer.load();
-    flvPlayer.play();
+    // });
+    // flvPlayer.attachMediaElement(videoElement);
+    // flvPlayer.load();
+    // flvPlayer.play();
 
     this.title = this.route.snapshot.params.id;
   }
